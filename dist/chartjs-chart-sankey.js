@@ -553,6 +553,8 @@ class SankeyController extends chart_js.DatasetController {
       const label = labels && labels[node.key] || node.key;
       let textX = x;
       ctx.fillStyle = dataset.color || 'black';
+      ctx.fillStyle = "blue";
+      // ctx.textBackgroundColor = 'blue';
       ctx.textBaseline = 'middle';
       if (x < chartArea.width / 2) {
         ctx.textAlign = 'left';
