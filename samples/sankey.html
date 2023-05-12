@@ -112,7 +112,7 @@
 		];
 
 		Utils.load(() => {
-			Chart.defaults.font.size = 9;
+			Chart.defaults.font.size = 8;
 			const ctx = document.getElementById('chart-area').getContext('2d');
 			window.chart = new Chart(ctx, {
 				type: 'sankey',
@@ -121,7 +121,11 @@
 						label: 'My sankey',
 						colorFrom: (c) => getColor(c.dataset.data[c.dataIndex].from),
 						colorTo: (c) => getColor(c.dataset.data[c.dataIndex].to),
-						data
+						data,
+						color:"white",
+						padding: -20,
+						labelColor:"Red"
+						
 					}]
 				},
 				options: {

@@ -550,8 +550,7 @@ class SankeyController extends DatasetController {
       const label = labels && labels[node.key] || node.key;
       let textX = x;
       ctx.fillStyle = dataset.color || 'black';
-      ctx.fillStyle = "blue";
-      // ctx.textBackgroundColor = 'blue';
+      // ctx.fillRect(20, 20, 150, 100);
       ctx.textBaseline = 'middle';
       if (x < chartArea.width / 2) {
         ctx.textAlign = 'left';
@@ -576,20 +575,39 @@ class SankeyController extends DatasetController {
   _drawLabel(label, y, height, ctx, textX) {
     const font = toFont(this.options.font, this.chart.options.font);
     const lines = isNullOrUndef(label) ? [] : toTextLines(label);
+    const dataset = this.getDataset(); 
     const linesLength = lines.length;
     const middle = y + height / 2;
     const textHeight = font.lineHeight;
     const padding = valueOrDefault(this.options.padding, textHeight / 2);
-
+    console.log("linesLength",linesLength);
+    console.log("middle",middle);
+    console.log("textHeight",textHeight);
+    
     ctx.font = font.string;
 
     if (linesLength > 1) {
       const top = middle - (textHeight * linesLength / 2) + padding;
       for (let i = 0; i < linesLength; i++) {
+        const width1=Math.round(ctx.measureText(lines[i]).width);
+        ctx.fillStyle=dataset.labelColor || '#fff';
+        ctx.beginPath();
+        ctx.roundRect(textX-2,top + (i * textHeight)-5,width1+5,textHeight,[2]);
+        ctx.fill();
+        ctx.fillStyle=dataset.color || '#000';
         ctx.fillText(lines[i], textX, top + (i * textHeight));
+        console.log("top",top);
       }
     } else {
+      const width2=Math.round(ctx.measureText(label).width);
+      ctx.fillStyle= dataset.labelColor || "#fff";
+      ctx.beginPath();
+      ctx.roundRect(textX-2,middle-5,width2+5,textHeight,[2]);
+      ctx.fill();
+      ctx.fillStyle=dataset.color || '#000';
       ctx.fillText(label, textX, middle);
+     
+      // ctx.fillRect(textX,top + (i * textHeight),width1,textHeight)
     }
   }
 
