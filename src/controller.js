@@ -243,7 +243,7 @@ export default class SankeyController extends DatasetController {
       const top = middle - (textHeight * linesLength / 2) + padding;
       for (let i = 0; i < linesLength; i++) {
         const width1=Math.round(ctx.measureText(lines[i]).width);
-        ctx.fillStyle=dataset.labelColor || '#fff';
+        ctx.fillStyle='red';
         ctx.beginPath();
         ctx.roundRect(textX-2,top + (i * textHeight)-5,width1+5,textHeight,[2])
         ctx.fill();
@@ -253,7 +253,7 @@ export default class SankeyController extends DatasetController {
       }
     } else {
       const width2=Math.round(ctx.measureText(label).width);
-      ctx.fillStyle= dataset.labelColor || '#fff';
+      ctx.fillStyle= 'red';
       ctx.beginPath();
       ctx.roundRect(textX-2,middle-5,width2+5,textHeight,[2])
       ctx.fill();
