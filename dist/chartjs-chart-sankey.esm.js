@@ -580,9 +580,9 @@ class SankeyController extends DatasetController {
     const middle = y + height / 2;
     const textHeight = font.lineHeight;
     const padding = valueOrDefault(this.options.padding, textHeight / 2);
-    console.log("linesLength",linesLength);
-    console.log("middle",middle);
-    console.log("textHeight",textHeight);
+    // console.log("linesLength",linesLength)
+    // console.log("middle",middle)
+    // console.log("textHeight",textHeight);
     
     ctx.font = font.string;
 
@@ -596,11 +596,11 @@ class SankeyController extends DatasetController {
         ctx.fill();
         ctx.fillStyle=dataset.color || '#000';
         ctx.fillText(lines[i], textX, top + (i * textHeight));
-        console.log("top",top);
+        // console.log("top",top);
       }
     } else {
       const width2=Math.round(ctx.measureText(label).width);
-      ctx.fillStyle= dataset.labelColor || "#fff";
+      ctx.fillStyle= dataset.labelColor || '#fff';
       ctx.beginPath();
       ctx.roundRect(textX-2,middle-5,width2+5,textHeight,[2]);
       ctx.fill();
