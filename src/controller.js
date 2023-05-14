@@ -242,21 +242,21 @@ export default class SankeyController extends DatasetController {
     if (linesLength > 1) {
       const top = middle - (textHeight * linesLength / 2) + padding;
       for (let i = 0; i < linesLength; i++) {
-        const width1=Math.round(ctx.measureText(lines[i]).width);
-        ctx.fillStyle='red';
-        ctx.beginPath();
-        ctx.roundRect(textX-2,top + (i * textHeight)-5,width1+5,textHeight,[2])
-        ctx.fill();
+        // const width1=Math.round(ctx.measureText(lines[i]).width);
+        // ctx.fillStyle='red';
+        // ctx.beginPath();
+        // ctx.roundRect(textX-2,top + (i * textHeight)-5,width1+5,textHeight,[2])
+        // ctx.fill();
         ctx.fillStyle=dataset.color || '#000';
         ctx.fillText(lines[i], textX, top + (i * textHeight));
         // console.log("top",top);
       }
     } else {
       const width2=Math.round(ctx.measureText(label).width);
-      ctx.fillStyle= 'red';
-      ctx.beginPath();
-      ctx.roundRect(textX-2,middle-5,width2+5,textHeight,[2])
-      ctx.fill();
+      // ctx.fillStyle= 'red';
+      // ctx.beginPath();
+      // ctx.roundRect(textX-2,middle-5,width2+5,textHeight,[2])
+      // ctx.fill();
       ctx.fillStyle=dataset.color || '#000';
       ctx.fillText(label, textX, middle);
      
