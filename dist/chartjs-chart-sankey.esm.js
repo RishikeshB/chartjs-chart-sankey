@@ -590,7 +590,7 @@ class SankeyController extends DatasetController {
       const top = middle - (textHeight * linesLength / 2) + padding;
       for (let i = 0; i < linesLength; i++) {
         const width1=Math.round(ctx.measureText(lines[i]).width);
-        ctx.fillStyle='red';
+        ctx.fillStyle='white';
         ctx.beginPath();
         ctx.roundRect(textX,top + (i * textHeight),width1+5,textHeight,[2]);
         ctx.fill();
