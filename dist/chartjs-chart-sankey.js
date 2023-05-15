@@ -604,9 +604,9 @@ class SankeyController extends chart_js.DatasetController {
     } else {
       const width2=Math.round(ctx.measureText(label).width);
       ctx.fillStyle= 'red';
-      ctx.beginPath();
-      ctx.roundRect(leftAligned ? textX-2 :textX-2-width2,middle-6,width2+5,textHeight,[2]);
-      ctx.fill();
+      // ctx.beginPath();
+      ctx.fillRect(leftAligned ? textX-2 :textX-2-width2,middle-6,width2+5,textHeight);
+      // ctx.fill();
       ctx.fillStyle=dataset.color || '#000';
       ctx.fillText(label, textX, middle);
      
