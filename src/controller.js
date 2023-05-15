@@ -253,7 +253,7 @@ export default class SankeyController extends DatasetController {
       }
     } else {
       const width2=Math.round(ctx.measureText(label).width);
-      ctx.fillStyle= '#fff';
+      ctx.fillStyle= 'red';
       ctx.beginPath();
       ctx.roundRect(leftAligned ? textX-2 :textX-2-width2,middle-6,width2+5,textHeight,[2])
       ctx.fill();
