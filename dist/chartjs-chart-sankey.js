@@ -593,7 +593,7 @@ class SankeyController extends chart_js.DatasetController {
       const top = middle - (textHeight * linesLength / 2) + padding;
       for (let i = 0; i < linesLength; i++) {
         const width1=Math.round(ctx.measureText(lines[i]).width);
-        ctx.fillStyle='#fff';
+        ctx.fillStyle='red';
         ctx.beginPath();
         ctx.roundRect(textX,top + (i * textHeight),width1+5,textHeight,[2]);
         ctx.fill();
@@ -603,7 +603,7 @@ class SankeyController extends chart_js.DatasetController {
       }
     } else {
       const width2=Math.round(ctx.measureText(label).width);
-      ctx.fillStyle= 'red';
+      ctx.fillStyle= 'white';
       ctx.beginPath();
       ctx.roundRect(leftAligned ? textX-2 :textX-2-width2,middle-6,width2+5,textHeight,[2]);
       ctx.fill();
