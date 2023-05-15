@@ -562,7 +562,7 @@ class SankeyController extends chart_js.DatasetController {
         ctx.textAlign = 'right';
         textX -= borderWidth + 4;
       }
-      this._drawLabel(label, y, height, ctx, textX);
+      this._drawLabel(label, y, height, ctx, textX, ctx.textAlign === 'left');
     }
     ctx.restore();
   }
@@ -575,7 +575,7 @@ class SankeyController extends chart_js.DatasetController {
    * @param {number} textX
    * @private
    */
-  _drawLabel(label, y, height, ctx, textX) {
+  _drawLabel(label, y, height, ctx, textX, leftAligned) {
     const font = helpers.toFont(this.options.font, this.chart.options.font);
     const lines = helpers.isNullOrUndef(label) ? [] : toTextLines(label);
     const dataset = this.getDataset(); 
@@ -599,13 +599,13 @@ class SankeyController extends chart_js.DatasetController {
         ctx.fill();
         ctx.fillStyle=dataset.color || '#000';
         ctx.fillText(lines[i], textX, top + (i * textHeight));
-        // console.log("top",top);
+        console.log("top",top);
       }
     } else {
       const width2=Math.round(ctx.measureText(label).width);
       ctx.fillStyle= 'red';
       ctx.beginPath();
-      ctx.roundRect(textX-2,middle-5,width2+5,textHeight,[2]);
+      ctx.roundRect(leftAligned ? textX-2 :textX-2-width2,middle-6,width2+5,textHeight,[2]);
       ctx.fill();
       ctx.fillStyle=dataset.color || '#000';
       ctx.fillText(label, textX, middle);
@@ -744,31 +744,31 @@ SankeyController.overrides = {
       display: false,
     },
   },
-  scales: {
-    x: {
-      type: 'linear',
-      bounds: 'data',
-      display: false,
-      min: 0,
-      offset: false,
-    },
-    y: {
-      type: 'linear',
-      bounds: 'data',
-      display: false,
-      min: 0,
-      reverse: true,
-      offset: false,
-    },
-  },
-  layout: {
-    padding: {
-      top: 3,
-      left: 3,
-      right: 13,
-      bottom: 3,
-    },
-  },
+  // scales: {
+  //   x: {
+  //     type: 'linear',
+  //     bounds: 'data',
+  //     display: false,
+  //     min: 0,
+  //     offset: false,
+  //   },
+  //   y: {
+  //     type: 'linear',
+  //     bounds: 'data',
+  //     display: false,
+  //     min: 0,
+  //     reverse: true,
+  //     offset: false,
+  //   },
+  // },
+  // layout: {
+  //   padding: {
+  //     top: 3,
+  //     left: 3,
+  //     right: 13,
+  //     bottom: 3,
+  //   },
+  // },
 };
 
 /**
