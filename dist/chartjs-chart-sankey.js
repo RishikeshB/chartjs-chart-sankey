@@ -553,7 +553,6 @@ class SankeyController extends chart_js.DatasetController {
       const label = labels && labels[node.key] || node.key;
       let textX = x;
       ctx.fillStyle = dataset.color || 'black';
-      // ctx.fillRect(20, 20, 150, 100);
       ctx.textBaseline = 'middle';
       if (x < chartArea.width / 2) {
         ctx.textAlign = 'left';
@@ -742,31 +741,31 @@ SankeyController.overrides = {
       display: false,
     },
   },
-  // scales: {
-  //   x: {
-  //     type: 'linear',
-  //     bounds: 'data',
-  //     display: false,
-  //     min: 0,
-  //     offset: false,
-  //   },
-  //   y: {
-  //     type: 'linear',
-  //     bounds: 'data',
-  //     display: false,
-  //     min: 0,
-  //     reverse: true,
-  //     offset: false,
-  //   },
-  // },
-  // layout: {
-  //   padding: {
-  //     top: 3,
-  //     left: 3,
-  //     right: 13,
-  //     bottom: 3,
-  //   },
-  // },
+  scales: {
+    x: {
+      type: 'linear',
+      bounds: 'data',
+      display: false,
+      min: 0,
+      offset: false,
+    },
+    y: {
+      type: 'linear',
+      bounds: 'data',
+      display: false,
+      min: 0,
+      reverse: true,
+      offset: false,
+    },
+  },
+  layout: {
+    padding: {
+      top: 3,
+      left: 3,
+      right: 13,
+      bottom: 3,
+    },
+  },
 };
 
 /**
